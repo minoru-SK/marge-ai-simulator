@@ -45,20 +45,20 @@ h1 {
 }
 
 #game {
-    width: 640px;
-    height: 640px;
+    width: 560px;
+    height: 560px;
     background: #bbada0;
-    padding: 20px;
+    padding: 15px;
     border-radius: 8px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-gap: 20px;
+    grid-gap: 15px;
     position: relative;
 }
 
 .cell {
-    width: 150px;
-    height: 150px;
+    width: 130px;
+    height: 130px;
     background: #cdc1b4;
     border-radius: 6px;
     position: relative;
@@ -66,13 +66,13 @@ h1 {
 
 .tile {
     position: absolute;
-    width: 150px;
-    height: 150px;
+    width: 130px;
+    height: 130px;
     border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 64px;
+    font-size: 56px;
     font-weight: bold;
     color: #fff;
 }
