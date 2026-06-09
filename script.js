@@ -7,6 +7,7 @@ function initBoard() {
     game.innerHTML = "";
     game.style.position = "relative";
 
+    // ★ ここで 16 個のセルを生成
     for (let i = 0; i < size * size; i++) {
         const cell = document.createElement("div");
         cell.className = "cell";
@@ -21,6 +22,7 @@ function initBoard() {
     clearArrows();
     setAIMessage("AI 推奨手：未計算");
 }
+
 
 function onCellClick(e) {
     const index = Number(e.currentTarget.dataset.index);
