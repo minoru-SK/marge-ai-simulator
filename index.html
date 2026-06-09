@@ -11,24 +11,20 @@
     <h1>Merge+1 AI 研究モード（4×4）</h1>
 
     <div id="controls">
-        <button id="moveUpBtn">↑ 上</button>
-        <button id="moveLeftBtn">← 左</button>
-        <button id="moveRightBtn">→ 右</button>
-        <button id="moveDownBtn">↓ 下</button>
         <button id="resetBtn">リセット</button>
         <button id="clearBtn">盤面クリア</button>
         <button id="aiSuggestBtn">AI 推奨手を計算</button>
     </div>
 
-    <div id="boardWrapper">
-        <div id="arrowUp" class="arrow">▲</div>
-        <div id="arrowLeft" class="arrow">◀</div>
-
-        <!-- ★ ここが盤面（セル16個が script.js で生成される） -->
+    <div id="gameWrapper">
         <div id="game"></div>
+    </div>
 
-        <div id="arrowRight" class="arrow">▶</div>
-        <div id="arrowDown" class="arrow">▼</div>
+    <div id="arrows">
+        <span id="arrowUp" class="arrow">▲</span>
+        <span id="arrowLeft" class="arrow">◀</span>
+        <span id="arrowRight" class="arrow">▶</span>
+        <span id="arrowDown" class="arrow">▼</span>
     </div>
 
     <p id="aiMessage">AI 推奨手：未計算</p>
