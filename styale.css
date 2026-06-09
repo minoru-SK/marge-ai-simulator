@@ -1,3 +1,35 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #faf8ef;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+    color: #776e65;
+}
+
+h1 {
+    margin-bottom: 10px;
+}
+
+#controls {
+    margin-bottom: 15px;
+}
+
+#controls button {
+    font-size: 16px;
+    padding: 6px 10px;
+    margin: 3px;
+}
+
+#boardWrapper {
+    display: inline-grid;
+    grid-template-columns: 40px 320px 40px;
+    grid-template-rows: 40px 320px 40px;
+    align-items: center;
+    justify-items: center;
+    gap: 5px;
+}
+
 #game {
     width: 320px;
     height: 320px;
@@ -29,4 +61,36 @@
     font-size: 32px;
     font-weight: bold;
     color: #fff;
+}
+
+.tile-1 { background: #eee4da; color: #776e65; }
+.tile-2 { background: #ede0c8; color: #776e65; }
+.tile-3 { background: #f2b179; }
+.tile-4 { background: #f59563; }
+.tile-5 { background: #f67c5f; }
+.tile-6 { background: #f65e3b; }
+.tile-7 { background: #edcf72; }
+.tile-8 { background: #edcc61; }
+.tile-9 { background: #edc850; }
+.tile-10 { background: #edc53f; }
+.tile-11 { background: #edc22e; }
+
+.arrow {
+    font-size: 24px;
+    color: #aaa;
+}
+
+.arrow.active {
+    color: #f65e3b;
+    font-weight: bold;
+}
+
+#aiMessage {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.note {
+    font-size: 12px;
+    color: #888;
 }
