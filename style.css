@@ -45,14 +45,14 @@ h1 {
 }
 
 #game {
-    width: 560px;
-    height: 560px;
+    width: 540px;
+    height: 540px;
     background: #bbada0;
-    padding: 15px;
-    border-radius: 8px;
+    padding: 12px;
+    border-radius: 4px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-gap: 15px;
+    grid-gap: 12px;
     position: relative;
 }
 
@@ -60,7 +60,7 @@ h1 {
     width: 130px;
     height: 130px;
     background: #cdc1b4;
-    border-radius: 6px;
+    border-radius: 4px;
     position: relative;
 }
 
@@ -68,7 +68,7 @@ h1 {
     position: absolute;
     width: 130px;
     height: 130px;
-    border-radius: 12px;
+    border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
