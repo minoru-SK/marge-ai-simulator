@@ -73,8 +73,10 @@ function onCellClick(e) {
     select.style.top = rect.top + "px";
     select.style.display = "block";
 
-    // ★ ここが重要：pointerdown で即 showPicker() を発火
+    // ★ Safari 対策：pointerdown で showPicker を発火
     requestAnimationFrame(() => {
+        const ev = new PointerEvent("pointerdown", { bubbles: true });
+        select.dispatchEvent(ev);
         select.showPicker();
     });
 
@@ -82,11 +84,9 @@ function onCellClick(e) {
         const value = select.value;
         select.style.display = "none";
 
-        // 空にする
         if (value === "") {
             tiles = tiles.filter(t => !(t.r === r && t.c === c));
             draw();
-
             const best = getBestMove(tiles, size);
             showBestMove();
             setAIMessage("AI 推奨手：" + (best ? best.toUpperCase() : "なし"));
@@ -100,7 +100,6 @@ function onCellClick(e) {
 
         draw();
 
-        // ★ タイル追加時のみ AI 計算
         const best = getBestMove(tiles, size);
         showBestMove();
         setAIMessage("AI 推奨手：" + best.toUpperCase());
