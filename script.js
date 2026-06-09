@@ -73,8 +73,10 @@ function onCellClick(e) {
     select.style.top = rect.top + "px";
     select.style.display = "block";
 
-    // ★ ここが重要：表示した瞬間にドロップダウンを開く
-    setTimeout(() => select.showPicker(), 0);
+    // ★ ここが重要：pointerdown で即 showPicker() を発火
+    requestAnimationFrame(() => {
+        select.showPicker();
+    });
 
     select.onchange = () => {
         const value = select.value;
