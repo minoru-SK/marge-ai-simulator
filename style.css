@@ -22,12 +22,20 @@ h1 {
 }
 
 #boardWrapper {
-    display: inline-grid;
+    display: grid;
     grid-template-columns: 40px 320px 40px;
     grid-template-rows: 40px 320px 40px;
     align-items: center;
-    justify-items: center;
+    justify-content: center;
     gap: 5px;
+    margin: 20px auto; /* ← これで上下に余白を確保 */
+    position: relative; /* ← 重なり防止 */
+    z-index: 1;
+}
+
+#controls {
+    position: relative;
+    z-index: 2; /* ← 盤面より前に表示 */
 }
 
 #game {
