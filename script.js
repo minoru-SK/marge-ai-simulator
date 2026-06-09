@@ -73,7 +73,9 @@ function onCellClick(e) {
     select.style.top = rect.top + "px";
     select.style.display = "block";
 
-    // 選択時の処理
+    // ★ ここが重要：表示した瞬間にドロップダウンを開く
+    setTimeout(() => select.showPicker(), 0);
+
     select.onchange = () => {
         const value = select.value;
         select.style.display = "none";
@@ -82,8 +84,10 @@ function onCellClick(e) {
         if (value === "") {
             tiles = tiles.filter(t => !(t.r === r && t.c === c));
             draw();
+
+            const best = getBestMove(tiles, size);
             showBestMove();
-            setAIMessage("AI 推奨手：" + getBestMove(tiles, size)?.toUpperCase());
+            setAIMessage("AI 推奨手：" + (best ? best.toUpperCase() : "なし"));
             return;
         }
 
