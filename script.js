@@ -61,7 +61,8 @@ function onCellClick(e) {
         tiles = tiles.filter(t => !(t.r === r && t.c === c));
         draw();
         clearArrows();
-        setAIMessage("AI 推奨手：盤面変更のため再計算してください");
+        showBestMove();
+        setAIMessage("AI 推奨手：自動計算しました");
         return;
     }
 
@@ -194,6 +195,7 @@ function move(dir) {
     draw();
     clearArrows();
     setAIMessage("AI 推奨手：盤面変更のため再計算してください");
+    showBestMove();
 }
 
 function clearBoard() {
