@@ -65,33 +65,41 @@ function onCellClick(e) {
     const r = Math.floor(index / size);
     const c = index % size;
 
-    const input = prompt("配置する数字を入力してください（1〜4、空にする場合は空欄）", "1");
-    if (input === null) return;
+    const select = document.getElementById("tileSelect");
 
-    const trimmed = input.trim();
-    if (trimmed === "") {
+    // セレクトボックスをクリック位置に表示
+    const rect = e.currentTarget.getBoundingClientRect();
+    select.style.left = rect.left + "px";
+    select.style.top = rect.top + "px";
+    select.style.display = "block";
+
+    // 選択時の処理
+    select.onchange = () => {
+        const value = select.value;
+        select.style.display = "none";
+
+        // 空にする
+        if (value === "") {
+            tiles = tiles.filter(t => !(t.r === r && t.c === c));
+            draw();
+            showBestMove();
+            setAIMessage("AI 推奨手：" + getBestMove(tiles, size)?.toUpperCase());
+            return;
+        }
+
+        const v = Number(value);
+
         tiles = tiles.filter(t => !(t.r === r && t.c === c));
+        tiles.push({ id: nextId++, value: v, r, c });
+
         draw();
-        clearArrows();
-        showBestMove(); // ★ 自動AI
-        setAIMessage("AI 推奨手：自動計算しました");
-        return;
-    }
 
-    const v = Number(trimmed);
-    if (![1, 2, 3, 4].includes(v)) {
-        alert("1〜4 の数字を入力してください。");
-        return;
-    }
-
-    tiles = tiles.filter(t => !(t.r === r && t.c === c));
-    tiles.push({ id: nextId++, value: v, r, c });
-
-    draw();
-    showBestMove();
-    setAIMessage("AI 推奨手：自動計算しました");
+        // ★ タイル追加時のみ AI 計算
+        const best = getBestMove(tiles, size);
+        showBestMove();
+        setAIMessage("AI 推奨手：" + best.toUpperCase());
+    };
 }
-
 
 function draw() {
     const game = document.getElementById("game");
@@ -208,7 +216,7 @@ function move(dir) {
     tiles = newTiles;
     draw();
     clearArrows();
-    setAIMessage("AI 推奨手：盤面変更のため再計算してください");
+    setAIMessage("AI 推奨手：タイル追加時に計算されます");
 }
 
 function clearBoard() {
