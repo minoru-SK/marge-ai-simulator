@@ -209,7 +209,6 @@ function move(dir) {
     draw();
     clearArrows();
     setAIMessage("AI 推奨手：盤面変更のため再計算してください");
-    showBestMove();
 }
 
 function clearBoard() {
