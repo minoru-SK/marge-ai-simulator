@@ -2,12 +2,36 @@ const size = 4;
 let tiles = []; // { id, value, r, c }
 let nextId = 1;
 
+let startX = 0;
+let startY = 0;
+
+const game = document.getElementById("game");
+
+game.addEventListener("touchstart", e => {
+    const t = e.touches[0];
+    startX = t.clientX;
+    startY = t.clientY;
+}, { passive: true });
+
+game.addEventListener("touchend", e => {
+    const t = e.changedTouches[0];
+    const dx = t.clientX - startX;
+    const dy = t.clientY - startY;
+
+    if (Math.abs(dx) > Math.abs(dy)) {
+        if (dx > 30) move("right");
+        else if (dx < -30) move("left");
+    } else {
+        if (dy > 30) move("down");
+        else if (dy < -30) move("up");
+    }
+});
+
 function initBoard() {
     const game = document.getElementById("game");
     game.innerHTML = "";
     game.style.position = "relative";
 
-    // ★ ここで 16 個のセルを生成
     for (let i = 0; i < size * size; i++) {
         const cell = document.createElement("div");
         cell.className = "cell";
