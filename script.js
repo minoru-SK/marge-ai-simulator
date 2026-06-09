@@ -4,6 +4,7 @@ let nextId = 1;
 
 let startX = 0;
 let startY = 0;
+let isSwiping = false;
 
 const game = document.getElementById("game");
 
@@ -11,9 +12,20 @@ game.addEventListener("touchstart", e => {
     const t = e.touches[0];
     startX = t.clientX;
     startY = t.clientY;
+    isSwiping = true;
 }, { passive: true });
 
+game.addEventListener("touchmove", e => {
+    if (!isSwiping) return;
+
+    // ★ 盤面上のスワイプは画面スクロールを止める
+    e.preventDefault();
+}, { passive: false });
+
 game.addEventListener("touchend", e => {
+    if (!isSwiping) return;
+    isSwiping = false;
+
     const t = e.changedTouches[0];
     const dx = t.clientX - startX;
     const dy = t.clientY - startY;
