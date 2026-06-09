@@ -73,7 +73,7 @@ function onCellClick(e) {
         tiles = tiles.filter(t => !(t.r === r && t.c === c));
         draw();
         clearArrows();
-        showBestMove();
+        showBestMove(); // ★ 自動AI
         setAIMessage("AI 推奨手：自動計算しました");
         return;
     }
@@ -86,10 +86,12 @@ function onCellClick(e) {
 
     tiles = tiles.filter(t => !(t.r === r && t.c === c));
     tiles.push({ id: nextId++, value: v, r, c });
+
     draw();
-    clearArrows();
-    setAIMessage("AI 推奨手：盤面変更のため再計算してください");
+    showBestMove();
+    setAIMessage("AI 推奨手：自動計算しました");
 }
+
 
 function draw() {
     const game = document.getElementById("game");
@@ -247,11 +249,7 @@ function showBestMove() {
 
 window.addEventListener("load", () => {
     initBoard();
-
-    document.getElementById("moveUpBtn").onclick = () => move("up");
-    document.getElementById("moveDownBtn").onclick = () => move("down");
-    document.getElementById("moveLeftBtn").onclick = () => move("left");
-    document.getElementById("moveRightBtn").onclick = () => move("right");
+    
     document.getElementById("resetBtn").onclick = () => initBoard();
     document.getElementById("clearBtn").onclick = () => clearBoard();
     document.getElementById("aiSuggestBtn").onclick = () => showBestMove();
