@@ -48,11 +48,11 @@ h1 {
     width: 540px;
     height: 540px;
     background: #bbada0;
-    padding: 12px;
+    padding: 10px;
     border-radius: 4px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-gap: 12px;
+    grid-gap: 10px;
     position: relative;
 }
 
