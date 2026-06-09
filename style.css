@@ -21,18 +21,24 @@ h1 {
     margin: 3px;
 }
 
-#boardWrapper {
-    display: grid;
-    grid-template-columns: 40px 320px 40px;
-    grid-template-rows: 40px 320px 40px;
-    align-items: center;
+#gameWrapper {
+    margin-top: 20px;
+    display: flex;
     justify-content: center;
-    gap: 5px;
-    margin: 20px auto; /* ← これで上下に余白を確保 */
-    position: relative; /* ← 重なり防止 */
-    z-index: 1;
 }
 
+#arrows {
+    margin-top: 10px;
+    font-size: 28px;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.arrow.active {
+    color: #f65e3b;
+    font-weight: bold;
+}
 #controls {
     position: relative;
     z-index: 2; /* ← 盤面より前に表示 */
