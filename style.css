@@ -45,30 +45,30 @@ h1 {
 }
 
 #game {
-    width: 800px;
-    height: 800px;
+    width: 640px;
+    height: 640px;
     background: #bbada0;
-    padding: 16px;
-    border-radius: 6px;
+    padding: 20px;
+    border-radius: 8px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-gap: 16px;
+    grid-gap: 20px;
     position: relative;
 }
 
 .cell {
-    width: 180px;
-    height: 180px;
+    width: 140px;
+    height: 140px;
     background: #cdc1b4;
-    border-radius: 16px;
+    border-radius: 8px;
     position: relative;
 }
 
 .tile {
     position: absolute;
-    width: 180px;
-    height: 180px;
-    border-radius: 16px;
+    width: 140px;
+    height: 140px;
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
