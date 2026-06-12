@@ -34,14 +34,6 @@ h1 {
     justify-content: center;
 }
 
-#arrows {
-    margin-top: 20px;
-    font-size: 48px;
-    display: flex;
-    justify-content: center;
-    gap: 80px;
-}
-
 .arrow.active {
     color: #f65e3b;
     font-weight: bold;
@@ -49,6 +41,36 @@ h1 {
 #controls {
     position: relative;
     z-index: 2; /* ← 盤面より前に表示 */
+}
+
+#boardArrows {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.middleRow {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin: 10px 0;
+}
+
+.arrow {
+    font-size: 48px;
+    cursor: pointer;
+    user-select: none;
+    color: #aaa;
+}
+
+.arrow.active {
+    color: #f65e3b;
+    font-weight: bold;
+}
+
+.arrow:hover {
+    color: #f65e3b;
 }
 
 #game {
@@ -117,16 +139,6 @@ h1 {
 
 .selectTile.selected {
     border-color: #f65e3b;
-}
-
-.arrow {
-    font-size: 24px;
-    color: #aaa;
-}
-
-.arrow.active {
-    color: #f65e3b;
-    font-weight: bold;
 }
 
 #aiMessage {
