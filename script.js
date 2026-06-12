@@ -2,6 +2,8 @@ const size = 4;
 let tiles = []; // { id, value, r, c }
 let nextId = 1;
 
+let selectedValue = null;
+
 let startX = 0;
 let startY = 0;
 let isSwiping = false;
@@ -65,45 +67,26 @@ function onCellClick(e) {
     const r = Math.floor(index / size);
     const c = index % size;
 
-    const select = document.getElementById("tileSelect");
-
-    // セレクトボックスをクリック位置に表示
-    const rect = e.currentTarget.getBoundingClientRect();
-    select.style.left = rect.left + "px";
-    select.style.top = rect.top + "px";
-    select.style.display = "block";
-
-    // ★ Safari 対策：pointerdown で showPicker を発火
-    requestAnimationFrame(() => {
-        const ev = new PointerEvent("pointerdown", { bubbles: true });
-        select.dispatchEvent(ev);
-        select.showPicker();
-    });
-
-    select.onchange = () => {
-        const value = select.value;
-        select.style.display = "none";
-
-        if (value === "") {
-            tiles = tiles.filter(t => !(t.r === r && t.c === c));
-            draw();
-            const best = getBestMove(tiles, size);
-            showBestMove();
-            setAIMessage("AI 推奨手：" + (best ? best.toUpperCase() : "なし"));
-            return;
-        }
-
-        const v = Number(value);
-
+    // ★ selectedValue が null のときは「消すモード」
+    if (selectedValue === null) {
         tiles = tiles.filter(t => !(t.r === r && t.c === c));
-        tiles.push({ id: nextId++, value: v, r, c });
-
         draw();
 
         const best = getBestMove(tiles, size);
         showBestMove();
-        setAIMessage("AI 推奨手：" + best.toUpperCase());
-    };
+        setAIMessage("AI 推奨手：" + (best ? best.toUpperCase() : "なし"));
+        return;
+    }
+
+    // ★ ここから「選択中の数字を置く」処理
+    tiles = tiles.filter(t => !(t.r === r && t.c === c));
+    tiles.push({ id: nextId++, value: selectedValue, r, c });
+
+    draw();
+
+    const best = getBestMove(tiles, size);
+    showBestMove();
+    setAIMessage("AI 推奨手：" + best.toUpperCase());
 }
 
 function draw() {
@@ -264,5 +247,17 @@ window.addEventListener("load", () => {
     
     document.getElementById("resetBtn").onclick = () => initBoard();
     document.getElementById("clearBtn").onclick = () => clearBoard();
-    document.getElementById("aiSuggestBtn").onclick = () => showBestMove();
+
+    // ★ ここから追加：1〜6＋消 のタイル選択
+    document.querySelectorAll(".selectTile").forEach(btn => {
+        btn.addEventListener("click", () => {
+            // いったん全部の選択状態を解除
+            document.querySelectorAll(".selectTile").forEach(b => b.classList.remove("selected"));
+            // 今押したボタンだけ選択状態に
+            btn.classList.add("selected");
+
+            const v = btn.dataset.value;
+            selectedValue = (v === "" ? null : Number(v));
+        });
+    });
 });
