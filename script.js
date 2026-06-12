@@ -249,10 +249,10 @@ window.addEventListener("load", () => {
     document.getElementById("clearBtn").onclick = () => clearBoard();
 
     // ★ PC 用の矢印ボタン
-    document.getElementById("arrowUpBtn").onclick = () => move("up");
-    document.getElementById("arrowDownBtn").onclick = () => move("down");
-    document.getElementById("arrowLeftBtn").onclick = () => move("left");
-    document.getElementById("arrowRightBtn").onclick = () => move("right");
+    document.getElementById("arrowUp").onclick = () => move("up");
+    document.getElementById("arrowDown").onclick = () => move("down");
+    document.getElementById("arrowLeft").onclick = () => move("left");
+    document.getElementById("arrowRight").onclick = () => move("right");
 
     document.querySelectorAll(".selectTile").forEach(btn => {
         btn.addEventListener("click", () => {
