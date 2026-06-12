@@ -8,39 +8,6 @@ let startX = 0;
 let startY = 0;
 let isSwiping = false;
 
-const game = document.getElementById("game");
-
-game.addEventListener("touchstart", e => {
-    const t = e.touches[0];
-    startX = t.clientX;
-    startY = t.clientY;
-    isSwiping = true;
-}, { passive: true });
-
-game.addEventListener("touchmove", e => {
-    if (!isSwiping) return;
-
-    // ★ 盤面上のスワイプは画面スクロールを止める
-    e.preventDefault();
-}, { passive: false });
-
-game.addEventListener("touchend", e => {
-    if (!isSwiping) return;
-    isSwiping = false;
-
-    const t = e.changedTouches[0];
-    const dx = t.clientX - startX;
-    const dy = t.clientY - startY;
-
-    if (Math.abs(dx) > Math.abs(dy)) {
-        if (dx > 30) move("right");
-        else if (dx < -30) move("left");
-    } else {
-        if (dy > 30) move("down");
-        else if (dy < -30) move("up");
-    }
-});
-
 function initBoard() {
     const game = document.getElementById("game");
     game.innerHTML = "";
@@ -254,6 +221,7 @@ window.addEventListener("load", () => {
     document.getElementById("arrowLeft").onclick = () => move("left");
     document.getElementById("arrowRight").onclick = () => move("right");
 
+    // ★ タイル選択
     document.querySelectorAll(".selectTile").forEach(btn => {
         btn.addEventListener("click", () => {
             document.querySelectorAll(".selectTile").forEach(b => b.classList.remove("selected"));
@@ -262,5 +230,37 @@ window.addEventListener("load", () => {
             const v = btn.dataset.value;
             selectedValue = (v === "" ? null : Number(v));
         });
+    });
+
+    // ★ スワイプイベントをここに移動
+    const game = document.getElementById("game");
+
+    game.addEventListener("touchstart", e => {
+        const t = e.touches[0];
+        startX = t.clientX;
+        startY = t.clientY;
+        isSwiping = true;
+    }, { passive: true });
+
+    game.addEventListener("touchmove", e => {
+        if (!isSwiping) return;
+        e.preventDefault();
+    }, { passive: false });
+
+    game.addEventListener("touchend", e => {
+        if (!isSwiping) return;
+        isSwiping = false;
+
+        const t = e.changedTouches[0];
+        const dx = t.clientX - startX;
+        const dy = t.clientY - startY;
+
+        if (Math.abs(dx) > Math.abs(dy)) {
+            if (dx > 30) move("right");
+            else if (dx < -30) move("left");
+        } else {
+            if (dy > 30) move("down");
+            else if (dy < -30) move("up");
+        }
     });
 });
