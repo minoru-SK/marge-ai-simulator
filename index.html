@@ -25,25 +25,34 @@
         <div class="selectTile tile-delete" data-value="">消</div>
     </div>
 
-   <div id="boardArrows">
-       <div id="arrowUp" class="arrow">▲</div>
-       
-       <div class="middleRow">
-           <div id="arrowLeft" class="arrow">◀</div>
-           <div id="arrowRight" class="arrow">▶</div>
-       </div>
-       
-       <div id="arrowDown" class="arrow">▼</div>
-   </div>
+    <!-- ★ 盤面を囲む矢印レイアウト -->
+    <div id="gameArea">
 
-    <div id="gameWrapper">
-        <div id="game"></div>
+        <!-- 上矢印 -->
+        <div id="arrowUp" class="arrow">▲</div>
+
+        <div class="middleRow">
+            <!-- 左矢印 -->
+            <div id="arrowLeft" class="arrow">◀</div>
+
+            <!-- 盤面 -->
+            <div id="gameWrapper">
+                <div id="game"></div>
+            </div>
+
+            <!-- 右矢印 -->
+            <div id="arrowRight" class="arrow">▶</div>
+        </div>
+
+        <!-- 下矢印 -->
+        <div id="arrowDown" class="arrow">▼</div>
+
     </div>
 
     <p id="aiMessage">AI 推奨手：未計算</p>
     <p class="note">
         セルをクリックすると、任意の数字（1〜6）のタイルを配置できます。<br>
-        タイルはランダム出現せず、すべて手動配置です。
+        「消」を選択するとタイルを削除できます。
     </p>
     
 </body>
