@@ -67,7 +67,7 @@ function onCellClick(e) {
     const r = Math.floor(index / size);
     const c = index % size;
 
-    // ★ selectedValue が null のときは「消すモード」
+    // ★ 消すモード（selectedValue === null）
     if (selectedValue === null) {
         tiles = tiles.filter(t => !(t.r === r && t.c === c));
         draw();
@@ -78,7 +78,7 @@ function onCellClick(e) {
         return;
     }
 
-    // ★ ここから「選択中の数字を置く」処理
+    // ★ 数字を置くモード
     tiles = tiles.filter(t => !(t.r === r && t.c === c));
     tiles.push({ id: nextId++, value: selectedValue, r, c });
 
@@ -248,12 +248,15 @@ window.addEventListener("load", () => {
     document.getElementById("resetBtn").onclick = () => initBoard();
     document.getElementById("clearBtn").onclick = () => clearBoard();
 
-    // ★ ここから追加：1〜6＋消 のタイル選択
+    // ★ PC 用の矢印ボタン
+    document.getElementById("arrowUpBtn").onclick = () => move("up");
+    document.getElementById("arrowDownBtn").onclick = () => move("down");
+    document.getElementById("arrowLeftBtn").onclick = () => move("left");
+    document.getElementById("arrowRightBtn").onclick = () => move("right");
+
     document.querySelectorAll(".selectTile").forEach(btn => {
         btn.addEventListener("click", () => {
-            // いったん全部の選択状態を解除
             document.querySelectorAll(".selectTile").forEach(b => b.classList.remove("selected"));
-            // 今押したボタンだけ選択状態に
             btn.classList.add("selected");
 
             const v = btn.dataset.value;
