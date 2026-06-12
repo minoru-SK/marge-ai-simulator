@@ -34,43 +34,9 @@ h1 {
     justify-content: center;
 }
 
-.arrow.active {
-    color: #f65e3b;
-    font-weight: bold;
-}
 #controls {
     position: relative;
     z-index: 2; /* ← 盤面より前に表示 */
-}
-
-#boardArrows {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.middleRow {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    margin: 10px 0;
-}
-
-.arrow {
-    font-size: 48px;
-    cursor: pointer;
-    user-select: none;
-    color: #aaa;
-}
-
-.arrow.active {
-    color: #f65e3b;
-    font-weight: bold;
-}
-
-.arrow:hover {
-    color: #f65e3b;
 }
 
 #game {
@@ -150,4 +116,34 @@ h1 {
 .note {
     font-size: 12px;
     color: #888;
+}
+
+#boardArrows {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.middleRow {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin: 10px 0;
+}
+
+.arrow {
+    font-size: 48px;
+    cursor: pointer;
+    user-select: none;
+    color: #aaa;
+}
+
+.arrow.active {
+    color: #f65e3b;
+    font-weight: bold;
+}
+
+.arrow:hover {
+    color: #f65e3b;
 }
