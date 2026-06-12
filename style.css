@@ -21,6 +21,13 @@ h1 {
     margin: 6px;
 }
 
+#tileSelector {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
 #gameWrapper {
     margin-top: 20px;
     display: flex;
@@ -88,6 +95,29 @@ h1 {
 .tile-9 { background: #edc850; }
 .tile-10 { background: #edc53f; }
 .tile-11 { background: #edc22e; }
+
+.selectTile {
+    width: 70px;          /* 実タイルより小さめ */
+    height: 70px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;      /* 実タイルより小さめ */
+    font-weight: bold;
+    color: #fff;
+    border: 4px solid transparent;
+    cursor: pointer;
+}
+
+.tile-delete {
+    background: #888;
+    color: #fff;
+}
+
+.selectTile.selected {
+    border-color: #f65e3b;
+}
 
 .arrow {
     font-size: 24px;
