@@ -147,3 +147,25 @@ h1 {
 .arrow:hover {
     color: #f65e3b;
 }
+
+#gameArea {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.middleRow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+}
+
+#arrowUp, #arrowDown {
+    margin: 10px 0;
+}
+
+#arrowLeft, #arrowRight {
+    margin: 0 20px;
+}
