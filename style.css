@@ -144,6 +144,11 @@ h1 {
     font-weight: bold;
 }
 
+.arrow:active {
+    background: none !important;
+    color: inherit !important;
+}
+
 .arrow:hover {
     color: #f65e3b;
 }
