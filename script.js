@@ -62,21 +62,32 @@ function draw() {
 
     const cells = document.querySelectorAll(".cell");
     const gameRect = game.getBoundingClientRect();
-
+    
     tiles.forEach(tileObj => {
         const tile = document.createElement("div");
         tile.classList.add("tile", "tile-" + tileObj.value);
         tile.textContent = tileObj.value;
         tile.dataset.id = tileObj.id;
 
-        const index = tileObj.r * size + tileObj.c;
-        const rect = cells[index].getBoundingClientRect();
+        // ★ タイルクリックで削除（消モードのとき）
+        tile.addEventListener("click", (e) => {
+            e.stopPropagation(); // セルクリックを防ぐ（安全）
+            if (selectedValue === null) {
+                tiles = tiles.filter(t => t.id !== tileObj.id);
+                draw();
+                showBestMove();
+            }
+        });
 
-        tile.style.top = (rect.top - gameRect.top) + "px";
-        tile.style.left = (rect.left - gameRect.left) + "px";
+    const index = tileObj.r * size + tileObj.c;
+    const rect = cells[index].getBoundingClientRect();
 
-        game.appendChild(tile);
-    });
+    tile.style.top = (rect.top - gameRect.top) + "px";
+    tile.style.left = (rect.left - gameRect.left) + "px";
+
+    game.appendChild(tile);
+});
+
 }
 
 function slideRow(rowTiles) {
