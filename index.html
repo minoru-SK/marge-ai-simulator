@@ -10,6 +10,11 @@
 <body>
     <h1>Merge+1 AI 研究モード（4×4）</h1>
 
+    <div id="controls">
+        <button id="resetBtn">リセット</button>
+        <button id="clearBtn">盤面クリア</button>
+    </div>
+
     <div id="tileSelector">
         <div class="selectTile" data-value="1">1</div>
         <div class="selectTile" data-value="2">2</div>
@@ -19,13 +24,7 @@
         <div class="selectTile" data-value="6">6</div>
         <div class="selectTile" data-value="">消</div>
     </div>
-
-    <div id="controls">
-        <button id="resetBtn">リセット</button>
-        <button id="clearBtn">盤面クリア</button>
-        <button id="aiSuggestBtn">AI 推奨手を計算</button>
-    </div>
-
+    
     <div id="gameWrapper">
         <div id="game"></div>
     </div>
